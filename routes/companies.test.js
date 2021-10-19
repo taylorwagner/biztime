@@ -18,3 +18,11 @@ afterEach(async () => {
 afterAll(async () => {
   await db.end()
 });
+
+describe("GET /companies", () => {
+    test("Get a list with one company", async () => {
+        const res = await request(app).get('/companies')
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toEqual({ companies: [testCompany] })
+    })
+});
